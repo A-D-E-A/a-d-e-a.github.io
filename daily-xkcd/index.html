@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily XKCD</title>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js");
+            navigator.serviceWorker.ready.then((registration) => {
+                // Not available under Firefox
+                if ("periodicSync" in registration) {
+                    registration.periodicSync.getTags().then((tags) => {
+                        if (!tags.includes("get-latest-comic")) {
+                            registration.periodicSync.register("get-latest-comic", {
+                                minInterval: 24 * 60 * 60 * 1000
+                            }).then(() => { console.log("Periodic sync registered!"); })
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/daily-xkcd/main.js"></script>
+</head>
+<body>
+    <h1 id="comic-title"></h1>
+    <h2 id="comic-num"></h2>
+    <div id="comic-date"></div>
+    <img id="comic-img">
+    <div id="comic-alt"></div>
+</body>
+</html>

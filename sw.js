@@ -1,12 +1,14 @@
 "use strict";
 
 // Set files to cache
-const version = "v6";
+const version = "v10";
 const cacheName = `myapp-${version}`;
 const filesToCache = [
     "/index.html",
     "/style.css",
-    "/main.js",
+    "/yan/index.html",
+    "/yan/main.js",
+    "/daily-xkcd/index.html",
     "/icons/github-icon_72x72.png",
     "/icons/github-icon_512x512.png"
 ];
@@ -35,8 +37,11 @@ self.addEventListener("fetch", (e) => {
         if (match) return match;
 
         const response = await fetch(e.request);
+        if (e.request.url.toString().endsWith("sw.js")) return response;
+        if (e.request.method !== "GET") return response;
+        if (["no-cache", "no-store"].includes(e.request.headers.get("Cache-Control"))) return response;
 
-        if (e.request.method === "GET" && !(e.request.headers.get("Cache-Control") === "no-cache" || e.request.headers.get("Cache-Control") === "no-store")) {
+        if (filesToCache.includes(e.request.url.pathname)) {
             const cache = await caches.open(cacheName);
             console.log("[SW] Caching new resource: ", e.request.url);
             cache.put(e.request, response.clone());
@@ -56,3 +61,16 @@ self.addEventListener("activate", (e) => {
         }));
     })());
 });
+
+// Fetch XKCD daily
+self.addEventListener("periodicsync", (event) => {
+    if (event.tag === "get-latest-comic") {
+        event.waitUntil(fetchAndCacheLatestComic())
+    }
+});
+
+async function fetchAndCacheLatestComic() {
+    const comicData = await fetch("https://corsproxy.io/?" + encodeURIComponent("https://xkcd.com/info.0.json")).then(r => r.json());
+    self.dispatchEvent(new FetchEvent("https://corsproxy.io/?" + encodeURIComponent(comicData.img)));
+    return comicData;
+}
