@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First PWA</title>
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Hello, World!</h1>
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("sw.js");
         }
     </script>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hello, World!</h1>
 </body>
 </html>
