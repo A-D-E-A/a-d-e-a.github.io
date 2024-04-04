@@ -1,7 +1,7 @@
 "use strict";
 
 // Set files to cache
-const version = "v2";
+const version = "v3";
 const cacheName = `myapp-${version}`;
 const filesToCache = [
     "/index.html",
@@ -48,7 +48,7 @@ self.addEventListener("fetch", (e) => {
 // Remove old content from cache to free disk space
 self.addEventListener("activate", (e) => {
     e.waitUntil((async () => {
-        const keys = await cache.keys();
+        const keys = await caches.keys();
         await Promise.all(keys.map(caches.delete));
     })());
 });
