@@ -6,6 +6,11 @@
         {
             "sizes": "72x72",
             "src": "https://a-d-e-a.github.io/icons/github-icon_72x72.png"
+        },
+        {
+            "sizes": "512x512",
+            "src": "https://a-d-e-a.github.io/icons/github-icon_512x512.png",
+            "type": "image/png"
         }
     ],
     "start_url": "/",
