@@ -1,7 +1,7 @@
 "use strict";
 
 // Set files to cache
-const version = "v1";
+const version = "v2";
 const cacheName = `myapp-${version}`;
 const filesToCache = [
     "/index.html",
