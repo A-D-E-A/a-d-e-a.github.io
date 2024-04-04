@@ -1,0 +1,15 @@
+{
+    "name": "My First Progressive Web Application!",
+    "short_name": "First PWA",
+    "description": "A basic PWA that serves as an example for my deer students.",
+    "icons": [
+        {
+            "sizes": "72x72",
+            "src": "https://a-d-e-a.github.io/icons/github-icon_72x72.png"
+        }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#ccc",
+    "background_color": "#666"
+}
