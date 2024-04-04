@@ -8,5 +8,12 @@
 </head>
 <body>
     <h1>Hello, World!</h1>
+    <script>
+        const worker = new Worker("worker.js");
+        worker.postMessage("Coucou, du thread princal");
+        worker.onmessage = ((ev) => {
+            console.log("Le thread worker a envoyé le message suivant: ", ev);
+        })
+    </script>
 </body>
 </html>
