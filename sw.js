@@ -1,11 +1,12 @@
 "use strict";
 
 // Set files to cache
-const version = "v3";
+const version = "v6";
 const cacheName = `myapp-${version}`;
 const filesToCache = [
     "/index.html",
     "/style.css",
+    "/main.js",
     "/icons/github-icon_72x72.png",
     "/icons/github-icon_512x512.png"
 ];
