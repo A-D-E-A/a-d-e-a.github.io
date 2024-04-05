@@ -3,7 +3,7 @@ const comicNum = document.querySelector("#comic-num");
 const comicDate = document.querySelector("#comic-date");
 const comicImg = document.querySelector("#comic-img");
 const comicAlt = document.querySelector("#comic-alt");
-const formatter = new Intl.DateTimeFormat(navigator.language);
+const formatter = new Intl.DateTimeFormat(navigator.language, { dateStyle: "long" });
 
 async function fetchLatestComic() {
     const comicData = await fetch("https://corsproxy.io/?" + encodeURIComponent("https://xkcd.com/info.0.json")).then(r => r.json());

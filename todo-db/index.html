@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList with IDB</title>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js");
+        }
+    </script>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/todo-db/main.js"></script>
+</head>
+<body>
+    <h1>Basic TodoList implementation with IDB</h1>
+
+    <form id="todo-add" action="#">
+        <fieldset>
+            <legend>Add a todo task</legend>
+            <label>Title: <input name="title" type="text" /></label>
+            <label>Description: <input name="description" type="text" /></label>
+            <label>Is done: <input name="is-done" type="checkbox" /></label>
+            <button name="submit" type="submit">Add element</button>
+            <button name="reset" type="reset">Reset form</button>
+        </fieldset>
+    </form>
+
+    <output id="todo-list"></output>
+</body>
+</html>

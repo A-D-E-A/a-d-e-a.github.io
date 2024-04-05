@@ -14,7 +14,8 @@
                         if (!tags.includes("get-latest-comic")) {
                             registration.periodicSync.register("get-latest-comic", {
                                 minInterval: 24 * 60 * 60 * 1000
-                            }).then(() => { console.log("Periodic sync registered!"); })
+                            }).then(() => { console.info("Periodic sync registered!"); })
+                            .catch(() => { console.warn("Periodic sync failed to register."); });
                         }
                     })
                 }
