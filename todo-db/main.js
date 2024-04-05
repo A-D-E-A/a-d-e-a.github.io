@@ -62,7 +62,7 @@ async function addTodo(todo) {
 
         const store = transaction.objectStore(storeName);
         const req = store.add(todo);
-        req.onsuccess = () => transaction.commit();
+        req.onsuccess = () => resolve();
         req.onerror = () => transaction.abort();
     });
 }
@@ -74,7 +74,7 @@ async function getKeys() {
 
         const store = transaction.objectStore(storeName);
         const req = store.getAllKeys();
-        req.onsuccess = () => { transaction.commit(); resolve(req.result) };
+        req.onsuccess = () => resolve(req.result);
         req.onerror = () => transaction.abort();
     });
 }
@@ -86,21 +86,22 @@ async function getAll() {
 
         const store = transaction.objectStore(storeName);
         const req = store.getAll();
-        req.onsuccess = () => { transaction.commit(); resolve(req.result); };
+        req.onsuccess = () => resolve(req.result);
         req.onerror = () => transaction.abort();
     });
 }
 
 async function deleteTask(title) {
     const transaction = (await openDB()).transaction([storeName], "readwrite");
+
     return await new Promise(async (resolve, reject) => {
         transaction.onerror = (event) => { console.error("Transaction error: ", event.target.error); reject() };
         transaction.oncomplete = resolve;
 
         const store = transaction.objectStore(storeName);
-        const req = store.delete.call(store, "I don't know man");
+        const req = store.delete(title);
         req.onerror = (event) => { console.error("Req error: ", event.target.error); reject() };
-        req.onsuccess = transaction.commit;
+        req.onsuccess = () => resolve();
     });
 }
 
