@@ -1,20 +1,45 @@
 {
-    "name": "My First Progressive Web Application!",
-    "short_name": "First PWA",
-    "description": "A basic PWA that serves as an example for my deer students.",
-    "icons": [
-        {
-            "sizes": "72x72",
-            "src": "https://a-d-e-a.github.io/icons/github-icon_72x72.png"
-        },
-        {
-            "sizes": "512x512",
-            "src": "https://a-d-e-a.github.io/icons/github-icon_512x512.png",
-            "type": "image/png"
-        }
-    ],
-    "start_url": "/",
-    "display": "fullscreen",
-    "theme_color": "#ccc",
-    "background_color": "#666"
+  "name": "My First Progressive Web Application!",
+  "short_name": "First PWA",
+  "description": "A basic PWA that serves as an example for my deer students.",
+  "icons": [
+    {
+      "sizes": "72x72",
+      "src": "https://a-d-e-a.github.io/icons/github-icon_72x72.png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "https://a-d-e-a.github.io/icons/github-icon_512x512.png",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ccc",
+  "background_color": "#666",
+  "id": "mfpwa-mds",
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait",
+  "shortcuts": [
+    {
+      "name": "YAN",
+      "url": "https://a-d-e-a.github.io/yan",
+      "description": "Notepad"
+    },
+    {
+      "name": "Daily XKCD",
+      "url": "https://a-d-e-a.github.io/daily-xkcd",
+      "description": "A daily comic to cheer you up"
+    },
+    {
+      "name": "Todo DB",
+      "url": "https://a-d-e-a.github.io/",
+      "description": "Basic Todo App"
+    }
+  ],
+  "categories": [
+    "entertainment",
+    "utilities"
+  ]
 }
